@@ -1,0 +1,28 @@
+/* Target header by ID */
+#app-header {
+  background-color: rgb(58, 176, 158);
+  color: white;
+  padding: 15px;
+  text-align: center;
+   flex: 1 1 80%;
+}
+#header-name{
+    color: WHITE;
+    font-size: 40px;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    
+}
+#header-content{
+    padding-left: 2%;
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+#header-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}

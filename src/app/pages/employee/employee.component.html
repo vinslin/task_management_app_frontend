@@ -1,0 +1,65 @@
+<div id="outer-container">
+    <div id="left-container">
+        <h3>Employees List</h3>
+        <table>
+            <thead>
+            <tr>
+            <th>Employee Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Edit</th>
+            </tr>
+            </thead>
+            <tr *ngFor="let emp of employees">
+                <td>{{emp.name}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.role}}</td>
+                <td id="emp-list-button">
+                    <button (click)="editEmployee(emp)">Update</button>
+                    <button (click)="deleteEmp(emp)">Delete</button>
+            </tr>
+
+        </table>
+    </div>
+
+ <div id="right-container">
+  <h2>{{isEditMode ? 'Update Employee' : 'Add New Employee'}}</h2>
+
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <label>
+      Name:
+      <input formControlName="name" />
+    </label>
+    <div *ngIf="employeeForm.get('name')?.touched && employeeForm.get('name')?.invalid">
+      <small style="color: red">Name is required</small>
+    </div>
+
+    <label>
+      Email:
+      <input formControlName="email" />
+    </label>
+    <div *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid">
+      <small style="color: red" *ngIf="employeeForm.get('email')?.errors?.['required']">Email is required</small>
+      <small style="color: red" *ngIf="employeeForm.get('email')?.errors?.['email']">Email is not valid</small>
+    </div>
+
+    <label>
+      Role:
+      <input formControlName="role" />
+    </label>
+    <div *ngIf="employeeForm.get('role')?.touched && employeeForm.get('role')?.invalid">
+      <small style="color: red">Role is required</small>
+    </div>
+<div id="but">
+    <br />
+    <button type="submit">{{isEditMode ? 'Update' : 'Submit'}}</button>
+
+<div *ngIf="isEditMode">
+  <button type="button" (click)="cancelUpdate()">Cancel</button>
+</div>
+</div>
+  </form>
+</div>
+
+
+</div>

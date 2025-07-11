@@ -1,0 +1,48 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full screen */
+}
+
+/* Header: 15% height */
+.layout-header {
+  
+  background-color: #3ab09e;
+}
+
+/* Content: 70% height */
+.layout-content {
+  flex: 1 1 80%;
+   display: flex;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+}
+
+/* Footer: 15% height */
+.layout-footer {
+  flex: 0 0 2%;
+  background-color: #3ab09e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app-sidebar{
+   
+    width : 9%;
+background-color: rgb(58, 176, 158);
+    overflow-y: auto;
+}
+
+#app-pages{
+    width:91%;
+    justify-content: center;
+    align-items: center;
+}
