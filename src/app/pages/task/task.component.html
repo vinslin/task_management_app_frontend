@@ -1,1 +1,30 @@
-<p>task works!</p>
+<h2>All Tasks</h2>
+
+<table  cellspacing="0" cellpadding="8">
+  <thead>
+    <tr>
+      
+      <th>Title</th>
+      <th>Description</th>
+      <th>Due Date</th>
+   
+      <th>Priority</th>
+      <th>Completed</th>
+      <th>Employee</th>
+      <th>Project</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+     
+      <td>{{ task.title }}</td>
+      <td>{{ task.description }}</td>
+      <td>{{ task.dueDate | date: 'mediumDate' }}</td>
+
+      <td>{{   getPriorityLabel(task.priority) }}</td>
+      <td>{{ task.isCompleted === 1 ? 'Yes' : 'No' }}</td>
+      <td>{{ task.employeeName }}</td>
+      <td>{{ task.projectName }}</td>
+    </tr>
+  </tbody>
+</table>

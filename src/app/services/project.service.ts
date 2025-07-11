@@ -8,6 +8,11 @@ export interface Project {
   description: string;
 }
 
+export interface ProScroll {
+  id: string;
+  name: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -43,5 +48,10 @@ export class ProjectService {
 
   deleteProject(id: string): Observable<Project> {
     return this.http.delete<Project>(`${this.apiUrl}/deleteProject/${id}`);
+  }
+
+  getProScroll(): Observable<ProScroll[]> {
+    // console.log('getalltask');
+    return this.http.get<any[]>(`${this.apiUrl}/Getprojectforscroller`);
   }
 }
