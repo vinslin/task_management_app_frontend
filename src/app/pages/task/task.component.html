@@ -1,30 +1,84 @@
-<h2>All Tasks</h2>
+<div id="outer-container">
+  <!-- LEFT SIDE: TASK LIST -->
+  <div id="left-container">
+    <h3>🗂️ Tasks List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Completed</th>
+          <th>Employee</th>
+          <th>Project</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.title }}</td>
+          <td class="desc-cell">{{ task.description }}</td>
+          <td>{{ task.dueDate | date: 'mediumDate' }}</td>
+          <td>{{ getPriorityLabel(task.priority) }}</td>
+          <td>{{ task.isCompleted == 1 ? 'Yes' : 'No' }}</td>
+          <td>{{ task.employeeName }}</td>
+          <td>{{ task.projectName }}</td>
+          <td>
+            <button (click)="editTask(task)">✏️</button>
+            <button (click)="deleteTask(task)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<table  cellspacing="0" cellpadding="8">
-  <thead>
-    <tr>
-      
-      <th>Title</th>
-      <th>Description</th>
-      <th>Due Date</th>
-   
-      <th>Priority</th>
-      <th>Completed</th>
-      <th>Employee</th>
-      <th>Project</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let task of tasks">
-     
-      <td>{{ task.title }}</td>
-      <td>{{ task.description }}</td>
-      <td>{{ task.dueDate | date: 'mediumDate' }}</td>
+  <!-- RIGHT SIDE: FORM -->
+  <div id="right-container">
+    <h2>{{ isEditMode ? 'Update Task' : 'Add New Task' }}</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <label>
+        Title:
+        <input formControlName="title" />
+      </label>
 
-      <td>{{   getPriorityLabel(task.priority) }}</td>
-      <td>{{ task.isCompleted === 1 ? 'Yes' : 'No' }}</td>
-      <td>{{ task.employeeName }}</td>
-      <td>{{ task.projectName }}</td>
-    </tr>
-  </tbody>
-</table>
+      <label>
+        Description:
+        <input formControlName="description" />
+      </label>
+
+      <label>
+        Due Date:
+        <input type="datetime-local" formControlName="dueDate" />
+      </label>
+
+      <label>
+        Priority:
+        <select formControlName="priority">
+          <option [value]="1">Low</option>
+          <option [value]="2">Medium</option>
+          <option [value]="3">High</option>
+        </select>
+      </label>
+
+      <label>
+        Employee:
+        <select class="scroll-select" formControlName="employeeId" >
+          <option *ngFor="let emp of empScroll" [value]="emp.id">{{ emp.name }}</option>
+        </select>
+      </label>
+
+      <label>
+        Project:
+        <select class="scroll-select" formControlName="projectId" >
+          <option *ngFor="let pro of proScroll" [value]="pro.id">{{ pro.name }}</option>
+        </select>
+      </label>
+
+      <div id="but">
+        <button type="submit">{{ isEditMode ? 'Update' : 'Submit' }}</button>
+        <button type="button" *ngIf="isEditMode" (click)="cancelUpdate()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

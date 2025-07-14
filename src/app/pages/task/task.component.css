@@ -1,0 +1,145 @@
+/* ---------- Layout ---------- */
+#outer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#left-container {
+  flex: 1 1 60%;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+#right-container {
+  flex: 1 1 35%;
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- Table ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  background-color: #3ab09e;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+/* ---------- Form ---------- */
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #3ab09e;
+  outline: none;
+  box-shadow: 0 0 3px rgba(58, 176, 158, 0.5);
+}
+
+.scroll-select {
+  max-height: 110px;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar */
+.scroll-select::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-select::-webkit-scrollbar-thumb {
+  background-color: #3ab09e;
+  border-radius: 4px;
+}
+.scroll-select::-webkit-scrollbar-thumb:hover {
+  background-color: #339b8c;
+}
+
+/* Firefox scrollbar */
+.scroll-select {
+  scrollbar-width: thin;
+  scrollbar-color: #3ab09e #f1f1f1;
+}
+
+/* ---------- Buttons ---------- */
+form button {
+  padding: 10px 20px;
+  background-color: #3ab09e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #339b8c;
+}
+
+#but {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#left-container button {
+  background-color: #3ab09e;
+  border: none;
+  padding: 6px 10px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+#left-container button:hover {
+  background-color: #2e9481;
+}
+
+/* ---------- Heading ---------- */
+h3, h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+.desc-cell {
+  max-width: 30px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}

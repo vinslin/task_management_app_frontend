@@ -7,33 +7,45 @@ export interface Tasks {
   title: string;
   description: string;
   daysForCompletion: number;
-  dueDate: string; // ISO string from backend — will be parsed into Date if needed
+  dueDate: string;
   priority: number;
   isCompleted: number;
-
   employeeId: string;
   employeeName: string;
-
   projectId: string;
   projectName: string;
 }
 
-
+export interface AddTask {
+  title: string;
+  description: string;
+  daysForCompletion: number;
+  priority: number;
+  projectId: string;
+  employeeId: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'https://localhost:7074/api/Tasks/';
+  private apiUrl = 'https://localhost:7074/api/Tasks';
 
   constructor(private http: HttpClient) {}
 
   getAllTasks(): Observable<Tasks[]> {
-    console.log('getalltask');
-    return this.http.get<any[]>(`${this.apiUrl}getAllTasks`);
+    return this.http.get<Tasks[]>(`${this.apiUrl}/getAllTasks`);
   }
 
+  addTask(task: AddTask): Observable<Tasks> {
+    return this.http.post<Tasks>(this.apiUrl, task);
+  }
 
+  updateTask(id: string, task: any): Observable<Tasks> {
+    return this.http.put<Tasks>(`${this.apiUrl}/UpdateTask`, task);
+  }
 
-
+  deleteTask(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/deleteTask/${id}`);
+  }
 }
