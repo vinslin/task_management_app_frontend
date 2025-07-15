@@ -1,0 +1,23 @@
+<div class="task-details-card" *ngIf="currentEmployee.name">
+  <h3 class="task-details-title"> Employee Details</h3>
+
+  <div class="task-row">
+    <span class="task-icon"></span>
+    <span><strong>Name:</strong> {{ currentEmployee.name }}</span>
+  </div>
+
+  <div class="task-row">
+    <span class="task-icon"></span>
+    <span><strong>Email:</strong> {{ currentEmployee.email }}</span>
+  </div>
+
+  <div class="task-row">
+    <span class="task-icon"></span>
+    <span><strong>Role:</strong> {{ currentEmployee.role }}</span>
+  </div>
+
+  <div class="task-row">
+    <span class="task-icon"></span>
+    <span><strong>Joined At:</strong> {{ currentEmployee.createdAt | date: 'mediumDate' }}</span>
+  </div>
+</div>

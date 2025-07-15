@@ -1,10 +1,16 @@
 <div id="app-header">
-    <div id="header-content">
-        <img src="logo.png"  id="header-logo" />
-
-
-
-        
-       <h3 id="header-name">Task Management App</h3>
+  <div id="header-content">
+    <!-- LEFT SIDE: logo + title -->
+    <div class="header-left">
+      <img src="logo.png" id="header-logo" />
+      <h3 id="header-name">Task Management App</h3>
     </div>
+
+    <!-- RIGHT SIDE: buttons -->
+    <div *ngIf="showAnalyticsButtons" id="analytics-buttons">
+      <button (click)="gotoAnalytics('taskanalytics')">Task Analytics</button>
+      <button (click)="gotoAnalytics('employeeanalytics')">Employee Analytics</button>
+      <button (click)="gotoAnalytics('projectanalytics')">Project Analytics</button>
+    </div>
+  </div>
 </div>

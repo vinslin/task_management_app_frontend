@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TaskService, AddTask, Tasks } from '../../services/task.service';
-import { EmpScroll, EmployeeService } from '../../services/employee.service';
-import { ProjectService, ProScroll } from '../../services/project.service';
+import { TaskService } from '../../services/task/task.service';
+import { EmployeeService } from '../../services/employee/employee.service';
+import { ProjectService } from '../../services/project/project.service';
 import {
   FormBuilder,
   FormGroup,
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { AddTask, ITasks } from '../../models/interfaces/ITask';
+import { IEmpScroll } from '../../models/interfaces/IEmployee';
+import { IProScroll } from '../../models/interfaces/IProject';
 
 @Component({
   selector: 'app-task',
@@ -18,9 +21,9 @@ import {
   styleUrls: ['./task.component.css'],
 })
 export class TaskComponent implements OnInit {
-  tasks: Tasks[] = [];
-  empScroll: EmpScroll[] = [];
-  proScroll: ProScroll[] = [];
+  tasks: ITasks[] = [];
+  empScroll: IEmpScroll[] = [];
+  proScroll: IProScroll[] = [];
 
   isEditMode: boolean = false;
   editingTaskId: string | null = null;
@@ -99,14 +102,12 @@ export class TaskComponent implements OnInit {
     }
   }
 
-  dayCalc(inDate: Date): any {
-    const now = new Date();
-    const dueDate = inDate;
-    const diff = dueDate.getTime() - now.getTime();
-    const daysForCompletion = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-    return daysForCompletion;
-  }
+dayCalc(inDate: any): number {
+  const now = new Date();
+  const dueDate = new Date(inDate); //  Ensure it's a Date object
+  const diff = dueDate.getTime() - now.getTime();
+  return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+}
 
   convertFOrmToAddTask(formValue: any): AddTask {
     const daysForCompletion = this.dayCalc(formValue.dueDate);
@@ -133,7 +134,7 @@ export class TaskComponent implements OnInit {
     });
   }
 
-  editTask(task: Tasks): void {
+  editTask(task: ITasks): void {
     this.isEditMode = true;
     this.editingTaskId = task.taskId;
 
@@ -178,7 +179,7 @@ export class TaskComponent implements OnInit {
     });
   }
 
-  deleteTask(task: Tasks): void {
+  deleteTask(task: ITasks): void {
     const confirmDelete = confirm('Are you sure you want to delete this task?');
     if (!confirmDelete) return;
 
@@ -211,4 +212,5 @@ export class TaskComponent implements OnInit {
       this.addTask(add);
     }
   }
+
 }

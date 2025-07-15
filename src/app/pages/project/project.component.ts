@@ -6,7 +6,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ProjectService, Project } from '../../services/project.service';
+import { ProjectService } from '../../services/project/project.service';
+import { IProject } from '../../models/interfaces/IProject';
 
 @Component({
   selector: 'app-project',
@@ -17,7 +18,7 @@ import { ProjectService, Project } from '../../services/project.service';
 export class ProjectComponent implements OnInit {
   projectForm!: FormGroup;
 
-  projects: Project[] = [];
+  projects: IProject[] = [];
   isEditMode = false;
 
   editingProjectId: string | null = null;
@@ -98,7 +99,7 @@ export class ProjectComponent implements OnInit {
     }
   }
 
-  editProject(pro: Project): void {
+  editProject(pro: IProject): void {
     this.isEditMode = true;
     this.editingProjectId = pro.id;
 
@@ -113,7 +114,7 @@ export class ProjectComponent implements OnInit {
     this.resetForm();
   }
 
-  deleteProject(pro: Project): void {
+  deleteProject(pro: IProject): void {
     const confirmDelete = confirm(
       'Are you sure you want to delete the Project ?'
     );

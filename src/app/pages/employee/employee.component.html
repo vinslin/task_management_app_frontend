@@ -6,6 +6,7 @@
             <tr>
             <th>Employee Name</th>
             <th>Email</th>
+            <th>Started Job At</th>
             <th>Role</th>
             <th>Edit</th>
             </tr>
@@ -13,7 +14,9 @@
             <tr *ngFor="let emp of employees">
                 <td>{{emp.name}}</td>
                 <td>{{emp.email}}</td>
+                <td>{{emp.createdAt  | date: 'mediumDate'}}
                 <td>{{emp.role}}</td>
+
                 <td id="emp-list-button">
                     <button (click)="editEmployee(emp)">Update</button>
                     <button (click)="deleteEmp(emp)">Delete</button>

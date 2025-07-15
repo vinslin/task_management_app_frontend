@@ -1,18 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Employee {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-}
-
-export interface EmpScroll {
-  id: string;
-  name: string;
-}
+import { IEmployee, IEmpScroll } from '../../models/interfaces/IEmployee';
 
 @Injectable({
   providedIn: 'root',
@@ -24,18 +13,22 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
-  getAllEmployee(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiUrl);
+  getAllEmployee(): Observable<IEmployee[]> {
+    return this.http.get<IEmployee[]>(this.apiUrl);
   }
 
-  addEmployee(name: string, email: string, role: string): Observable<Employee> {
+  addEmployee(
+    name: string,
+    email: string,
+    role: string
+  ): Observable<IEmployee> {
     const input = {
       userName: name,
       email: email,
       role: role,
     };
 
-    return this.http.post<Employee>(this.apiUrl, input);
+    return this.http.post<IEmployee>(this.apiUrl, input);
   }
 
   updateEmployee(
@@ -43,21 +36,26 @@ export class EmployeeService {
     name: string,
     email: string,
     role: string
-  ): Observable<Employee> {
+  ): Observable<IEmployee> {
     const input = {
       userName: name,
       email: email,
       role: role,
     };
 
-    return this.http.put<Employee>(`${this.updateUrl}${id}`, input);
+    return this.http.put<IEmployee>(`${this.updateUrl}${id}`, input);
   }
-  getEmpScroll(): Observable<EmpScroll[]> {
+  getEmpScroll(): Observable<IEmpScroll[]> {
     // console.log('getalltask');
     return this.http.get<any[]>(`${this.apiUrl}/Getemployeeforscroller`);
   }
 
-  deleteEmployee(id: string): Observable<Employee> {
+  getSingleEmployee(id: string): Observable<IEmployee> {
+    // console.log('getalltask');
+    return this.http.get<IEmployee>(`${this.apiUrl}/getsingleemployee/${id}`);
+  }
+
+  deleteEmployee(id: string): Observable<IEmployee> {
     return this.http.delete<any>(`${this.deleteUrl}${id}`);
   }
 }
