@@ -6,11 +6,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {
-  EmployeeService,
- 
-} from '../../services/employee/employee.service';
-import { Employee } from '../../models/interfaces/IEmployee';
+import { EmployeeService } from '../../services/employee/employee.service';
+import { IEmployee } from '../../models/interfaces/IEmployee';
 
 @Component({
   selector: 'app-employee',
@@ -21,7 +18,7 @@ import { Employee } from '../../models/interfaces/IEmployee';
 })
 export class EmployeeComponent implements OnInit {
   employeeForm!: FormGroup;
-  employees: Employee[] = [];
+  employees: IEmployee[] = [];
   isEditMode = false;
   editingEmployeeId: string | null = null;
 
@@ -93,7 +90,7 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
-  editEmployee(emp: Employee): void {
+  editEmployee(emp: IEmployee): void {
     this.isEditMode = true;
     this.editingEmployeeId = emp.id;
 
@@ -110,7 +107,7 @@ export class EmployeeComponent implements OnInit {
     this.editingEmployeeId = null;
   }
 
-  deleteEmp(emp: Employee): void {
+  deleteEmp(emp: IEmployee): void {
     const confirmDelete = confirm(
       `Are you sure you want to delete ${emp.name}?`
     );

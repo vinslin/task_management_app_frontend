@@ -9,9 +9,9 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { AddTask, Tasks } from '../../models/interfaces/ITask';
-import { EmpScroll } from '../../models/interfaces/IEmployee';
-import { ProScroll } from '../../models/interfaces/IProject';
+import { AddTask, ITasks } from '../../models/interfaces/ITask';
+import { IEmpScroll } from '../../models/interfaces/IEmployee';
+import { IProScroll } from '../../models/interfaces/IProject';
 
 @Component({
   selector: 'app-task',
@@ -21,9 +21,9 @@ import { ProScroll } from '../../models/interfaces/IProject';
   styleUrls: ['./task.component.css'],
 })
 export class TaskComponent implements OnInit {
-  tasks: Tasks[] = [];
-  empScroll: EmpScroll[] = [];
-  proScroll: ProScroll[] = [];
+  tasks: ITasks[] = [];
+  empScroll: IEmpScroll[] = [];
+  proScroll: IProScroll[] = [];
 
   isEditMode: boolean = false;
   editingTaskId: string | null = null;
@@ -134,7 +134,7 @@ dayCalc(inDate: any): number {
     });
   }
 
-  editTask(task: Tasks): void {
+  editTask(task: ITasks): void {
     this.isEditMode = true;
     this.editingTaskId = task.taskId;
 
@@ -179,7 +179,7 @@ dayCalc(inDate: any): number {
     });
   }
 
-  deleteTask(task: Tasks): void {
+  deleteTask(task: ITasks): void {
     const confirmDelete = confirm('Are you sure you want to delete this task?');
     if (!confirmDelete) return;
 
@@ -212,4 +212,5 @@ dayCalc(inDate: any): number {
       this.addTask(add);
     }
   }
+
 }

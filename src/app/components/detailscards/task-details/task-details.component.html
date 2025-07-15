@@ -1,0 +1,40 @@
+<div id="task-details-card" *ngIf="currentTask.title !== ''">
+  <div class="task-details-card">
+    <h3 class="task-details-title"> Task Details</h3>
+
+    <div class="task-row">
+      <span class="task-icon"></span>
+      <span><strong>Title :</strong> {{ currentTask.title }}</span>
+    </div>
+
+    <div class="task-row">
+      <span class="task-icon"></span>
+      <span><strong>Description :</strong> {{ currentTask.description }}</span>
+    </div>
+
+    <div class="task-row">
+      <span class="task-icon"></span>
+      <span><strong>Due Date :</strong> {{ currentTask.dueDate | date: 'mediumDate' }}</span>
+    </div>
+
+    <div class="task-row">
+      <span class="task-icon"></span>
+      <span><strong>Priority :</strong> {{ getPriorityLabel(currentTask.priority) }}</span>
+    </div>
+
+    <div class="task-row">
+      <span class="task-icon"></span>
+      <span><strong>Completed :</strong> {{ currentTask.isCompleted ? 'Yes' : 'No' }}</span>
+    </div>
+
+    <div class="task-row" (click)="onEmployeeClick()">
+      <span class="task-icon"></span>
+      <span><strong>Employee :</strong> {{ currentTask.employeeName }}</span>
+    </div>
+
+    <div class="task-row" (click)="onProjectClick()">
+      <span class="task-icon"></span>
+      <span><strong>Project :</strong> {{ currentTask.projectName }}</span>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,11 @@
-export interface Project {
+export interface IProject {
   id: string;
   name: string;
   description: string;
+  createdAt :string;
 }
 
-export interface ProScroll {
+export interface IProScroll {
   id: string;
   name: string;
 }

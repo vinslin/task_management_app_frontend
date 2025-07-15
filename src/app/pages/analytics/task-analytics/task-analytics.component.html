@@ -1,1 +1,41 @@
-<p>task-analytics works!</p>
+<div id="outer-container">
+  <div id="left-container">
+    <h2> Task Overview</h2>
+
+    <div style="overflow-x: auto;">
+      <table cellpadding="10" cellspacing="0">
+        <thead>
+          <tr>
+            <th> Completed Tasks</th>
+            <th> Due Tasks</th>
+            <th> Ongoing Tasks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let _ of createRange(maxLength); let i = index">
+            <td (click)="onTaskcli(completedTasks[i])">{{ completedTasks[i]?.title || '-' }}</td>
+            <td (click)="onTaskcli(dueTasks[i])">{{ dueTasks[i]?.title || '-' }}</td>
+            <td (click)="onTaskcli(timeHavingTasks[i])">{{ timeHavingTasks[i]?.title || '-' }}</td>
+          </tr>
+          <tr>
+            <td>{{completedTasks.length}}</td>
+            <td>{{dueTasks.length}}</td>
+            <td>{{timeHavingTasks.length}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="right-container">
+    <app-bar-chart [completedTasks]="completedTasks.length" [dueTasks]="dueTasks.length" [onGoingTasks]="timeHavingTasks.length"></app-bar-chart>
+ 
+  </div>
+
+<div id="bottom-container">
+<app-task-details [currentTask]="currentTask"  (projectClicked)="projectDetailShow()" (employeeClicked)="employeeDetailShow()"></app-task-details>
+<app-project-details *ngIf="projectDetails"></app-project-details>
+<app-employee-details *ngIf="employeeDetails"></app-employee-details>
+
+</div>
+

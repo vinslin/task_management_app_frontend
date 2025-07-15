@@ -1,4 +1,4 @@
-export interface Tasks {
+export interface ITasks {
   taskId: string;
   title: string;
   description: string;

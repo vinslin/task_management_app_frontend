@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AddTask, Tasks } from '../../models/interfaces/ITask';
+import { AddTask, ITasks } from '../../models/interfaces/ITask';
 
 @Injectable({
   providedIn: 'root',
@@ -11,19 +11,35 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
 
-  getAllTasks(): Observable<Tasks[]> {
-    return this.http.get<Tasks[]>(`${this.apiUrl}/getAllTasks`);
+  getAllTasks(): Observable<ITasks[]> {
+    return this.http.get<ITasks[]>(`${this.apiUrl}/getAllTasks`);
   }
 
-  addTask(task: AddTask): Observable<Tasks> {
-    return this.http.post<Tasks>(this.apiUrl, task);
+  addTask(task: AddTask): Observable<ITasks> {
+    return this.http.post<ITasks>(this.apiUrl, task);
   }
 
-  updateTask(id: string, task: any): Observable<Tasks> {
-    return this.http.put<Tasks>(`${this.apiUrl}/UpdateTask`, task);
+  updateTask(id: string, task: any): Observable<ITasks> {
+    return this.http.put<ITasks>(`${this.apiUrl}/UpdateTask`, task);
   }
 
-  deleteTask(id: string): Observable<void> {
+  deleteTask(id: string): Observable<any> {
     return this.http.delete<void>(`${this.apiUrl}/deleteTask/${id}`);
+  }
+
+  completedTask(): Observable<ITasks[]> {
+    return this.http.get<ITasks[]>(`${this.apiUrl}/getcompletedtasks`);
+  }
+
+  incompletedTask(): Observable<ITasks[]> {
+    return this.http.get<ITasks[]>(`${this.apiUrl}/getincompletedtasks`);
+  }
+
+  dueTask(): Observable<ITasks[]> {
+    return this.http.get<ITasks[]>(`${this.apiUrl}/getduetasks`);
+  }
+
+  timeHavingTask(): Observable<ITasks[]> {
+    return this.http.get<ITasks[]>(`${this.apiUrl}/gettimehavingtasks`);
   }
 }
