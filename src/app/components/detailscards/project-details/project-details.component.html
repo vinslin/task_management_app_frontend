@@ -1,1 +1,18 @@
-<p>project-details works!</p>
+<div class="task-details-card" *ngIf="currentProject.name">
+  <h3 class="task-details-title"> Project Details</h3>
+
+  <div class="task-row">
+    <span class="task-icon"></span>
+    <span><strong>Name:</strong> {{ currentProject.name }}</span>
+  </div>
+
+  <div class="task-row">
+    <span class="task-icon"></span>
+    <span><strong>Description:</strong> {{ currentProject.description }}</span>
+  </div>
+
+  <div class="task-row">
+    <span class="task-icon"></span>
+    <span><strong>Created At:</strong> {{ currentProject.createdAt | date: 'mediumDate' }}</span>
+  </div>
+</div>

@@ -33,9 +33,24 @@
   </div>
 
 <div id="bottom-container">
-<app-task-details [currentTask]="currentTask"  (projectClicked)="projectDetailShow()" (employeeClicked)="employeeDetailShow()"></app-task-details>
-<app-project-details *ngIf="projectDetails"></app-project-details>
-<app-employee-details *ngIf="employeeDetails"></app-employee-details>
+  <app-task-details
+    class="detail-card"
+    [currentTask]="currentTask"
+    (projectClicked)="projectDetailShow()"
+    (employeeClicked)="employeeDetailShow()"
+    *ngIf="taskDetails"
+  ></app-task-details>
 
+  <app-project-details
+    class="detail-card"
+    [currentProject]="currentProject"
+    *ngIf="projectDetails"
+  ></app-project-details>
+
+  <app-employee-details
+    class="detail-card"
+    [currentEmployee]="currentEmployee"
+    *ngIf="employeeDetails"
+  ></app-employee-details>
 </div>
 

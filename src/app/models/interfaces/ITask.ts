@@ -10,6 +10,7 @@ export interface ITasks {
   employeeName: string;
   projectId: string;
   projectName: string;
+
 }
 
 export interface AddTask {

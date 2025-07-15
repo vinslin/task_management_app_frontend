@@ -44,4 +44,9 @@ export class ProjectService {
     // console.log('getalltask');
     return this.http.get<any[]>(`${this.apiUrl}/Getprojectforscroller`);
   }
+
+  getSingleProject(id: string): Observable<IProject> {
+    // console.log('getalltask');
+    return this.http.get<IProject>(`${this.apiUrl}/getoneproject/${id}`);
+  }
 }

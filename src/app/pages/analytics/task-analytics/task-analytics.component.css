@@ -26,8 +26,32 @@
 }
 
 #bottom-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
   width: 100%;
-  margin-top: 20px;
+  
+  
+  box-sizing: border-box;
+}
+
+/* Reusable style for all detail cards */
+.detail-card {
+  width: 400px;
+  height: 370px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
 }
 
 /* ---------- Table Styles ---------- */
@@ -62,18 +86,6 @@ tbody tr:hover td {
 }
 
 /* ---------- Task Detail Card (If present here too) ---------- */
-.task-details-card {
-  background: #fff;
-  padding: 20px 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border-left: 6px solid #2bbbad;
-  max-width: 500px;
-  margin: 20px auto;
-  font-family: 'Segoe UI', sans-serif;
-  color: #333;
-  transition: all 0.3s ease-in-out;
-}
 
 .task-details-title {
   color: #009688;
