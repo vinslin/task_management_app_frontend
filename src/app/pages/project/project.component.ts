@@ -6,7 +6,11 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ProjectService, Project } from '../../services/project.service';
+import {
+  ProjectService,
+
+} from '../../services/project/project.service';
+import { Project } from '../../models/interfaces/IProject';
 
 @Component({
   selector: 'app-project',

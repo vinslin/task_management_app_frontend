@@ -32,5 +32,28 @@ export const routes: Routes = [
       import('./pages/analytics/analytics.component').then(
         (a) => a.AnalyticsComponent
       ),
+    children: [
+      {
+        path: 'taskanalytics',
+        loadComponent: () =>
+          import(
+            './pages/analytics/task-analytics/task-analytics.component'
+          ).then((m) => m.TaskAnalyticsComponent),
+      },
+      {
+        path: 'employeeanalytics',
+        loadComponent: () =>
+          import(
+            './pages/analytics/employee-analytics/employee-analytics.component'
+          ).then((m) => m.EmployeeAnalyticsComponent),
+      },
+      {
+        path: 'projectanalytics',
+        loadComponent: () =>
+          import(
+            './pages/analytics/project-analytics/project-analytics.component'
+          ).then((m) => m.ProjectAnalyticsComponent),
+      },
+    ],
   },
 ];

@@ -1,17 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Project {
-  id: string;
-  name: string;
-  description: string;
-}
-
-export interface ProScroll {
-  id: string;
-  name: string;
-}
+import { Project, ProScroll } from '../../models/interfaces/IProject';
 
 @Injectable({
   providedIn: 'root',

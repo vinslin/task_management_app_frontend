@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-analytics',
-  imports: [],
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './analytics.component.html',
-  styleUrl: './analytics.component.css'
+  styleUrls: ['./analytics.component.css'],
 })
 export class AnalyticsComponent {
-
+  constructor(private router: Router) {}
 }

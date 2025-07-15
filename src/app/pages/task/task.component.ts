@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TaskService, AddTask, Tasks } from '../../services/task.service';
-import { EmpScroll, EmployeeService } from '../../services/employee.service';
-import { ProjectService, ProScroll } from '../../services/project.service';
+import { TaskService } from '../../services/task/task.service';
+import { EmployeeService } from '../../services/employee/employee.service';
+import { ProjectService } from '../../services/project/project.service';
 import {
   FormBuilder,
   FormGroup,
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { AddTask, Tasks } from '../../models/interfaces/ITask';
+import { EmpScroll } from '../../models/interfaces/IEmployee';
+import { ProScroll } from '../../models/interfaces/IProject';
 
 @Component({
   selector: 'app-task',
@@ -99,14 +102,12 @@ export class TaskComponent implements OnInit {
     }
   }
 
-  dayCalc(inDate: Date): any {
-    const now = new Date();
-    const dueDate = inDate;
-    const diff = dueDate.getTime() - now.getTime();
-    const daysForCompletion = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-    return daysForCompletion;
-  }
+dayCalc(inDate: any): number {
+  const now = new Date();
+  const dueDate = new Date(inDate); //  Ensure it's a Date object
+  const diff = dueDate.getTime() - now.getTime();
+  return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+}
 
   convertFOrmToAddTask(formValue: any): AddTask {
     const daysForCompletion = this.dayCalc(formValue.dueDate);

@@ -73,7 +73,16 @@
         <select class="scroll-select" formControlName="projectId" >
           <option *ngFor="let pro of proScroll" [value]="pro.id">{{ pro.name }}</option>
         </select>
-      </label>
+      </label> 
+      
+      <label>
+  Completed:
+  <select formControlName="isCompleted">
+    <option [value]="1">Yes</option>
+    <option [value]="0">No</option>
+  </select>
+</label>
+
 
       <div id="but">
         <button type="submit">{{ isEditMode ? 'Update' : 'Submit' }}</button>

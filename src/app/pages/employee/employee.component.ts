@@ -6,7 +6,11 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { EmployeeService, Employee } from '../../services/employee.service';
+import {
+  EmployeeService,
+ 
+} from '../../services/employee/employee.service';
+import { Employee } from '../../models/interfaces/IEmployee';
 
 @Component({
   selector: 'app-employee',
