@@ -1,1 +1,75 @@
-<p>project-analytics works!</p>
+<div id="outer-container">
+
+<div id="above-container">
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <label>
+      <h3>Project:</h3>
+      <select 
+        class="scroll-select" 
+        formControlName="projectId">
+        <option value="" disabled selected>Select Project</option>
+        <option *ngFor="let pro of projectScroll" [value]="pro.id">
+          {{ pro.name }}
+        </option>
+      </select>
+    </label>
+
+    <button type="submit">Get Tasks</button>
+  </form>
+</div>
+
+  <div id="left-container">
+    <h2> Task Overview</h2>
+
+    <div style="overflow-x: auto;">
+      <table cellpadding="10" cellspacing="0">
+        <thead>
+          <tr>
+            <th> Completed Tasks</th>
+            <th> Due Tasks</th>
+            <th> Ongoing Tasks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let _ of createRange(maxLength); let i = index">
+            <td (click)="onTaskcli(completedTasks[i].taskId)">{{ completedTasks[i]?.taskName || '-' }}</td>
+            <td (click)="onTaskcli(dueTasks[i].taskId)">{{ dueTasks[i]?.taskName || '-' }}</td>
+            <td (click)="onTaskcli(timeHavingTasks[i].taskId)">{{ timeHavingTasks[i]?.taskName || '-' }}</td>
+          </tr>
+          <tr>
+            <td>{{completedTasks.length}}</td>
+            <td>{{dueTasks.length}}</td>
+            <td>{{timeHavingTasks.length}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="right-container">
+    <app-bar-chart [completedTasks]="completedTasks.length" [dueTasks]="dueTasks.length" [onGoingTasks]="timeHavingTasks.length"></app-bar-chart>
+ 
+  </div>
+
+<div id="bottom-container">
+  <app-task-details
+    class="detail-card"
+    [currentTask]="currentTask"
+    (projectClicked)="projectDetailShow()"
+    (employeeClicked)="employeeDetailShow()"
+    *ngIf="taskDetails"
+  ></app-task-details>
+
+  <app-project-details
+    class="detail-card"
+    [currentProject]="currentProject"
+    *ngIf="projectDetails"
+  ></app-project-details>
+
+  <app-employee-details
+    class="detail-card"
+    [currentEmployee]="currentEmployee"
+    *ngIf="employeeDetails"
+  ></app-employee-details>
+</div>
+

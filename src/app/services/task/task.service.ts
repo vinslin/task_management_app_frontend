@@ -46,7 +46,11 @@ export class TaskService {
   employeeTask(id: string): Observable<IresponseTask> {
     return this.http.get<IresponseTask>(`${this.apiUrl}/employeetasks/${id}`);
   }
- 
+
+  projectTask(id: string): Observable<IresponseTask> {
+    return this.http.get<IresponseTask>(`${this.apiUrl}/projecttasks/${id}`);
+  }
+
   getSingleTask(id: string): Observable<ITasks> {
     return this.http.get<ITasks>(`${this.apiUrl}/gettaskbyid/${id}`);
   }
