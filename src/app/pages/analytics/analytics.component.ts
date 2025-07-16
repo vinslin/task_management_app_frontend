@@ -10,7 +10,6 @@ import { TaskService } from '../../services/task/task.service';
   styleUrls: ['./analytics.component.css'],
 })
 export class AnalyticsComponent {
-  constructor(private router: Router,
-  ) {}
-  
+  // constructor(private router: Router,
+  // ) {}
 }
