@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AddTask, ITasks } from '../../models/interfaces/ITask';
+import { AddTask, IresponseTask, ITasks } from '../../models/interfaces/ITask';
 
 @Injectable({
   providedIn: 'root',
@@ -43,5 +43,15 @@ export class TaskService {
     return this.http.get<ITasks[]>(`${this.apiUrl}/gettimehavingtasks`);
   }
 
-  
+  employeeTask(id: string): Observable<IresponseTask> {
+    return this.http.get<IresponseTask>(`${this.apiUrl}/employeetasks/${id}`);
+  }
+
+  projectTask(id: string): Observable<IresponseTask> {
+    return this.http.get<IresponseTask>(`${this.apiUrl}/projecttasks/${id}`);
+  }
+
+  getSingleTask(id: string): Observable<ITasks> {
+    return this.http.get<ITasks>(`${this.apiUrl}/gettaskbyid/${id}`);
+  }
 }

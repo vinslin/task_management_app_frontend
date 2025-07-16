@@ -1,0 +1,205 @@
+/* ---------- Layout Containers ---------- */
+#outer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+#above-container {
+  flex: 1 1 10%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+
+#left-container {
+  flex: 1 1 50%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+#right-container {
+  flex: 1 1 20%;
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+#bottom-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  
+  
+  box-sizing: border-box;
+}
+
+/* Reusable style for all detail cards */
+.detail-card {
+  width: 400px;
+  height: 370px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ---------- Table Styles ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  text-align: center;
+  min-width: 600px;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+thead th {
+  background-color: #3ab09e;
+  color: #fff;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tbody tr:hover td {
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* ---------- Task Detail Card (If present here too) ---------- */
+
+.task-details-title {
+  color: #009688;
+  font-size: 20px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.task-icon {
+  width: 28px;
+  text-align: center;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+/* ---------- Responsive Tweaks ---------- */
+@media (max-width: 768px) {
+  #outer-container {
+    flex-direction: column;
+  }
+
+  #left-container,
+  #right-container {
+    flex: 1 1 100%;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  .task-details-card {
+    margin: 10px;
+    max-width: 100%;
+  }
+}
+/* Custom Scrollbar */
+.scroll-select::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-select::-webkit-scrollbar-thumb {
+  background-color: #3ab09e;
+  border-radius: 4px;
+}
+.scroll-select::-webkit-scrollbar-thumb:hover {
+  background-color: #339b8c;
+}
+
+/* Firefox scrollbar */
+.scroll-select {
+  scrollbar-width: thin;
+  scrollbar-color: #3ab09e #f1f1f1;
+}
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}/* Style for the Get Tasks button */
+button[type="submit"] {
+  padding: 10px 24px;
+  background-color: #3ab09e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 34px;
+  margin-top: 8px;
+}
+
+/* Hover effect */
+button[type="submit"]:hover {
+  background-color: #339b8c;
+  transform: translateY(-1px);
+}
+
+/* Disabled state */
+button[type="submit"]:disabled {
+  background-color: #b0dcd4;
+  cursor: not-allowed;
+  transform: none;
+}

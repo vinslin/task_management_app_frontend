@@ -29,12 +29,14 @@
 
     <div class="task-row" (click)="onEmployeeClick()">
       <span class="task-icon"></span>
-      <span><strong>Employee :</strong> {{ currentTask.employeeName }}</span>
+      <span class="button-effect"><strong>Employee :</strong> {{ currentTask.employeeName }} <span class="task-icon"> ▶️</span></span>
     </div>
 
     <div class="task-row" (click)="onProjectClick()">
       <span class="task-icon"></span>
-      <span><strong>Project :</strong> {{ currentTask.projectName }}</span>
+      <span class="button-effect"><strong>Project :</strong> {{ currentTask.projectName }}    <span class="task-icon"> ▶️</span></span>
     </div>
+ 
+
   </div>
 </div>
