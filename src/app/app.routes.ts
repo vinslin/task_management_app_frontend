@@ -34,6 +34,11 @@ export const routes: Routes = [
       ),
     children: [
       {
+        path: '',
+        redirectTo: 'taskanalytics',
+        pathMatch: 'full',
+      },
+      {
         path: 'taskanalytics',
         loadComponent: () =>
           import(

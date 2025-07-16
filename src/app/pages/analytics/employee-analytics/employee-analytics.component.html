@@ -23,25 +23,39 @@
 
     <div style="overflow-x: auto;">
       <table cellpadding="10" cellspacing="0">
-        <thead>
-          <tr>
-            <th> Completed Tasks</th>
-            <th> Due Tasks</th>
-            <th> Ongoing Tasks</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let _ of createRange(maxLength); let i = index">
-            <td (click)="onTaskcli(completedTasks[i].taskId)">{{ completedTasks[i]?.taskName || '-' }}</td>
-            <td (click)="onTaskcli(dueTasks[i].taskId)">{{ dueTasks[i]?.taskName || '-' }}</td>
-            <td (click)="onTaskcli(timeHavingTasks[i].taskId)">{{ timeHavingTasks[i]?.taskName || '-' }}</td>
-          </tr>
-          <tr>
-            <td>{{completedTasks.length}}</td>
-            <td>{{dueTasks.length}}</td>
-            <td>{{timeHavingTasks.length}}</td>
-          </tr>
-        </tbody>
+<div style="overflow-x: auto;">
+  <ng-container *ngIf="maxLength > 0; else noTasks">
+    <table cellpadding="10" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Completed Tasks</th>
+          <th>Due Tasks</th>
+          <th>Ongoing Tasks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let _ of createRange(maxLength); let i = index">
+          <td (click)="onTaskcli(completedTasks[i].taskId)">{{ completedTasks[i]?.taskName || '-' }}</td>
+          <td (click)="onTaskcli(dueTasks[i].taskId)">{{ dueTasks[i]?.taskName || '-' }}</td>
+          <td (click)="onTaskcli(timeHavingTasks[i].taskId)">{{ timeHavingTasks[i]?.taskName || '-' }}</td>
+        </tr>
+        <tr>
+          <td>{{ completedTasks.length }}</td>
+          <td>{{ dueTasks.length }}</td>
+          <td>{{ timeHavingTasks.length }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+
+  <!-- Shown when there are no tasks -->
+  <ng-template #noTasks>
+    <p style="text-align: center; color: #999; font-style: italic; padding: 20px;">
+      No tasks assigned
+    </p>
+  </ng-template>
+</div>
+
       </table>
     </div>
   </div>

@@ -176,4 +176,30 @@ form select {
   font-family: inherit;
   background-color: #fff;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}/* Style for the Get Tasks button */
+button[type="submit"] {
+  padding: 10px 24px;
+  background-color: #3ab09e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 34px;
+  margin-top: 8px;
+}
+
+/* Hover effect */
+button[type="submit"]:hover {
+  background-color: #339b8c;
+  transform: translateY(-1px);
+}
+
+/* Disabled state */
+button[type="submit"]:disabled {
+  background-color: #b0dcd4;
+  cursor: not-allowed;
+  transform: none;
 }
