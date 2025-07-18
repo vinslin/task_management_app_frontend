@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { NgIf } from '@angular/common'; // ✅ import NgIf
+import { NgIf } from '@angular/common'; //  import NgIf
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIf], // ✅ include NgIf in imports
+  imports: [NgIf], //  include NgIf in imports
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })

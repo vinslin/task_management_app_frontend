@@ -1,16 +1,24 @@
 import { Routes } from '@angular/router';
-import { AnalyticsComponent } from './pages/analytics/analytics.component';
+import { AuthGuard } from './guards/auth-guard';
+import { RoleGuard } from './guards/role-guard';
+import { Role } from './models/role.enum';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'task',
+    redirectTo: 'login',
     pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
   },
   {
     path: 'task',
     loadComponent: () =>
       import('./pages/task/task.component').then((t) => t.TaskComponent),
+    canActivate: [AuthGuard],
   },
   {
     path: 'employee',
@@ -18,6 +26,7 @@ export const routes: Routes = [
       import('./pages/employee/employee.component').then(
         (e) => e.EmployeeComponent
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'project',
@@ -25,6 +34,7 @@ export const routes: Routes = [
       import('./pages/project/project.component').then(
         (p) => p.ProjectComponent
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'analytics',
@@ -32,6 +42,8 @@ export const routes: Routes = [
       import('./pages/analytics/analytics.component').then(
         (a) => a.AnalyticsComponent
       ),
+    canActivate: [AuthGuard, RoleGuard],
+    data: { roles: [Role.Director] },
     children: [
       {
         path: '',
