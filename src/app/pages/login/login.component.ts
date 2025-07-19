@@ -39,6 +39,7 @@ export class LoginComponent {
             localStorage.setItem('userName', res.userName);
             localStorage.setItem('expires_At', res.expiresAt);
             localStorage.setItem('role', res.role);
+            this.router.navigate(['/task']);
           },
           error: (err) => {
             this.errorMessage = 'Invalid Credentials';
