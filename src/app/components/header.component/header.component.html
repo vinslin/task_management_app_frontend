@@ -6,11 +6,29 @@
       <h3 id="header-name">Task Management App</h3>
     </div>
 
+    <div class="profile-wrapper">
     <!-- RIGHT SIDE: buttons -->
     <div *ngIf="showAnalyticsButtons" id="analytics-buttons">
       <button (click)="gotoAnalytics('taskanalytics')">Task Analytics</button>
       <button (click)="gotoAnalytics('employeeanalytics')">Employee Analytics</button>
       <button (click)="gotoAnalytics('projectanalytics')">Project Analytics</button>
+    </div>
+    
+    <!-- Profile Icon Section -->
+<div class="profile-section" *ngIf="showProfileButtons">
+  <img
+    src="sidebar.png"
+    alt="Profile"
+    class="profile-icon"
+    (click)="toggleProfileDropdown()"
+  />
+
+  <div class="profile-dropdown" *ngIf="showProfileDropdown">
+    <button (click)="gotoProfile()">Profile</button>
+    <button (click)="logout()"  >Logout</button>
+  </div>
+    </div>
+
     </div>
   </div>
 </div>

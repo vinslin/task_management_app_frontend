@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/authentication/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private _authService: AuthService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -39,6 +41,10 @@ export class LoginComponent {
             localStorage.setItem('userName', res.userName);
             localStorage.setItem('expires_At', res.expiresAt);
             localStorage.setItem('role', res.role);
+            localStorage.setItem('email', res.email);
+
+            this._authService.broadcastStoredRole(); //  Broadcast updated role
+            this._authService.broadcastStoredLogin();
             this.router.navigate(['/task']);
           },
           error: (err) => {
@@ -46,5 +52,9 @@ export class LoginComponent {
           },
         });
     }
+  }
+
+  gotoSignup(): void {
+    this.router.navigate(['/signup']);
   }
 }

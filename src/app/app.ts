@@ -17,6 +17,6 @@ export class App {
 
   ngOnInit(): void {
     this.authService.broadcastStoredRole(); //app load ahana udane engine start panna
+    this.authService.broadcastStoredLogin();
   }
 }
- 

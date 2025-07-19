@@ -1,31 +1,62 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { NgIf } from '@angular/common'; //  import NgIf
+import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/authentication/auth.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIf], //  include NgIf in imports
+  imports: [NgIf],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   showAnalyticsButtons = false;
+  showProfileButtons = false;
+  showProfileDropdown = false; //
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private _authService: AuthService) {
+    console.log('Initial showProfileButtons:', this.showProfileButtons);
+  }
+
+  profileShow(): void {
+    this._authService.login$.subscribe((login) => {
+      this.showProfileButtons = login === true;
+    });
+  }
 
   ngOnInit(): void {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        console.log('Route changed to:', event.urlAfterRedirects);
-        this.showAnalyticsButtons =
-          event.urlAfterRedirects === '/analytics' ||
-          event.urlAfterRedirects === '/analytics/taskanalytics' ||
-          event.urlAfterRedirects === '/analytics/employeeanalytics' ||
-          event.urlAfterRedirects === '/analytics/projectanalytics';
+        this.showAnalyticsButtons = [
+          '/analytics',
+          '/analytics/taskanalytics',
+          '/analytics/employeeanalytics',
+          '/analytics/projectanalytics',
+        ].includes(event.urlAfterRedirects);
       });
+
+    this.profileShow();
+  }
+
+  toggleProfileDropdown(): void {
+    this.showProfileDropdown = !this.showProfileDropdown;
+  }
+
+  gotoProfile(): void {
+    console.log('profile worked bro');
+    // this.router.navigate(['/profile']); // Optional navigation
+    this.router.navigate(['/profile']);
+    this.showProfileDropdown = false;
+  }
+
+  logout(): void {
+    this._authService.logout(); // if you have such a function
+    this.showProfileDropdown = false;
+    this.showProfileButtons = false;
+    this.router.navigate(['/login']);
   }
 
   gotoAnalytics(page: string): void {

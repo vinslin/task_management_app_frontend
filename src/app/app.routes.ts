@@ -15,6 +15,19 @@ export const routes: Routes = [
       import('./pages/login/login.component').then((m) => m.LoginComponent),
   },
   {
+    path: 'signup',
+    loadComponent: () =>
+      import('./pages/signup/signup.component').then((m) => m.SignupComponent),
+  },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./pages/profile/profile/profile.component').then(
+        (m) => m.ProfileComponent
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'task',
     loadComponent: () =>
       import('./pages/task/task.component').then((t) => t.TaskComponent),
