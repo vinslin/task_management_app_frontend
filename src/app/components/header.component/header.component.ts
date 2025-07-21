@@ -31,10 +31,10 @@ export class HeaderComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.showAnalyticsButtons = [
-          '/analytics',
-          '/analytics/taskanalytics',
-          '/analytics/employeeanalytics',
-          '/analytics/projectanalytics',
+          '/app/analytics',
+          '/app/analytics/taskanalytics',
+          '/app/analytics/employeeanalytics',
+          '/app/analytics/projectanalytics',
         ].includes(event.urlAfterRedirects);
       });
 
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   gotoProfile(): void {
     console.log('profile worked bro');
     // this.router.navigate(['/profile']); // Optional navigation
-    this.router.navigate(['/profile']);
+    this.router.navigate(['app/profile']);
     this.showProfileDropdown = false;
   }
 
@@ -60,6 +60,6 @@ export class HeaderComponent implements OnInit {
   }
 
   gotoAnalytics(page: string): void {
-    this.router.navigate(['/analytics', page]);
+    this.router.navigate(['/app/analytics', page]);
   }
 }

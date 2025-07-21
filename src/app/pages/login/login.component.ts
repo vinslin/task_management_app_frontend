@@ -45,7 +45,7 @@ export class LoginComponent {
 
             this._authService.broadcastStoredRole(); //  Broadcast updated role
             this._authService.broadcastStoredLogin();
-            this.router.navigate(['/task']);
+            this.router.navigate(['/app']);
           },
           error: (err) => {
             this.errorMessage = 'Invalid Credentials';
