@@ -20,6 +20,14 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'practice',
+        loadComponent: () =>
+          import('./pages/practice/practice.component').then(
+            (m) => m.PracticeComponent
+          ),
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'profile',
         loadComponent: () =>
           import('./pages/profile/profile/profile.component').then(

@@ -1,0 +1,14 @@
+<h3>Pipes + Dynamic Form</h3>
+
+<label>
+  start index:
+  <input type="number" [(ngModule)]="start" />
+</label>
+<label>
+  End Index:
+  <input type="number" [(ngModel)]="end" />
+</label>
+
+<h4>Original : {{ hi }}</h4>
+
+<h1>Sliced : {{ hi | customSlice : start : end }}</h1>

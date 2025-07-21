@@ -11,11 +11,22 @@ export class AuthService {
   private roleSubject = new BehaviorSubject<string | null>(null);
   public role$ = this.roleSubject.asObservable();
 
+  //for pipe is in the app component
+  private manuallyLoggedOut = false;
+
   //for login logout button
   private loginSubject = new BehaviorSubject<boolean | null>(null);
   public login$ = this.loginSubject.asObservable();
 
   constructor(private http: HttpClient) {}
+
+  setManualLoggedOut(flag: boolean) {
+    this.manuallyLoggedOut = flag;
+  }
+
+  wasManuallyLoggedOut(): boolean {
+    return this.manuallyLoggedOut;
+  }
 
   getToken(): string | null {
     const token = localStorage.getItem('token');
@@ -57,6 +68,7 @@ export class AuthService {
   }
 
   logout(): void {
+    this.manuallyLoggedOut = true;
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('userName');
@@ -66,5 +78,22 @@ export class AuthService {
   signup(user: IUser): import('rxjs').Observable<boolean> {
     console.log(user);
     return this.http.post<boolean>(`${this.apiUrl}Register`, user);
+  }
+
+  isTokenExpired(): boolean {
+    const token = localStorage.getItem('token');
+    if (!token) return true;
+
+    try {
+      const payLoad = JSON.parse(atob(token.split('.')[1]));
+      const expiry = payLoad.exp;
+      const now = Math.floor(Date.now() / 1000);
+
+      return now > expiry;
+    } catch (error) {
+      console.error('Token parse error :', error);
+
+      return true;
+    }
   }
 }
