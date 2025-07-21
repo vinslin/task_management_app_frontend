@@ -1,0 +1,95 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  background-color: #f3f3f3;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #1e90ff;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #187bcd;
+}
+
+.login-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.signup-redirect {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-redirect span {
+  margin-right: 8px;
+}
+
+.signup-redirect button {
+  background: none;
+  border: none;
+  color: #1e90ff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 0;
+}
+
+.signup-redirect button:hover {
+  color: #187bcd;
+}

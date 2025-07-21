@@ -1,10 +1,44 @@
-
 <div id="sidebar">
-<ul id="sidebar-list">
-    <li><a routerLink="/task" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Task</a></li>
-    <li><a routerLink="/analytics" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Analytics</a></li>
-    <li><a routerLink="/employee" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Employees</a></li>
-    <li><a routerLink="/project" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Project</a></li>
-</ul>
-
+  <ul id="sidebar-list">
+    <li>
+      <a
+        routerLink="task"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Task</a
+      >
+    </li>
+    <li *ngIf="analyticShow">
+      <a
+        routerLink="analytics"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Analytics</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="employee"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Employees</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="project"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Project</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="practice"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Practice</a
+      >
+    </li>
+  </ul>
 </div>

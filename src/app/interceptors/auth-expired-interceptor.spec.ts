@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpInterceptorFn } from '@angular/common/http';
 
-import { loadingInterceptor } from './loading-interceptor';
+import { authExpiredInterceptor } from './auth-expired-interceptor';
 
-describe('loadingInterceptor', () => {
+describe('authExpiredInterceptor', () => {
   const interceptor: HttpInterceptorFn = (req, next) => 
-    TestBed.runInInjectionContext(() => loadingInterceptor(req, next));
+    TestBed.runInInjectionContext(() => authExpiredInterceptor(req, next));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

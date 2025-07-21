@@ -1,64 +1,109 @@
 import { Routes } from '@angular/router';
-import { AnalyticsComponent } from './pages/analytics/analytics.component';
+import { AuthGuard } from './guards/auth-guard';
+import { RoleGuard } from './guards/role-guard';
+import { Role } from './models/role.enum';
+import { MainappComponent } from './components/mainapp/mainapp.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'task',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
-    path: 'task',
-    loadComponent: () =>
-      import('./pages/task/task.component').then((t) => t.TaskComponent),
-  },
-  {
-    path: 'employee',
-    loadComponent: () =>
-      import('./pages/employee/employee.component').then(
-        (e) => e.EmployeeComponent
-      ),
-  },
-  {
-    path: 'project',
-    loadComponent: () =>
-      import('./pages/project/project.component').then(
-        (p) => p.ProjectComponent
-      ),
-  },
-  {
-    path: 'analytics',
-    loadComponent: () =>
-      import('./pages/analytics/analytics.component').then(
-        (a) => a.AnalyticsComponent
-      ),
+    path: 'app',
+    component: MainappComponent,
     children: [
       {
         path: '',
-        redirectTo: 'taskanalytics',
+        redirectTo: 'task',
         pathMatch: 'full',
       },
       {
-        path: 'taskanalytics',
+        path: 'practice',
         loadComponent: () =>
-          import(
-            './pages/analytics/task-analytics/task-analytics.component'
-          ).then((m) => m.TaskAnalyticsComponent),
+          import('./pages/practice/practice.component').then(
+            (m) => m.PracticeComponent
+          ),
+        canActivate: [AuthGuard],
       },
       {
-        path: 'employeeanalytics',
+        path: 'profile',
         loadComponent: () =>
-          import(
-            './pages/analytics/employee-analytics/employee-analytics.component'
-          ).then((m) => m.EmployeeAnalyticsComponent),
+          import('./pages/profile/profile/profile.component').then(
+            (m) => m.ProfileComponent
+          ),
+        canActivate: [AuthGuard],
       },
       {
-        path: 'projectanalytics',
+        path: 'task',
         loadComponent: () =>
-          import(
-            './pages/analytics/project-analytics/project-analytics.component'
-          ).then((m) => m.ProjectAnalyticsComponent),
+          import('./pages/task/task.component').then((t) => t.TaskComponent),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'employee',
+        loadComponent: () =>
+          import('./pages/employee/employee.component').then(
+            (e) => e.EmployeeComponent
+          ),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'project',
+        loadComponent: () =>
+          import('./pages/project/project.component').then(
+            (p) => p.ProjectComponent
+          ),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'analytics',
+        loadComponent: () =>
+          import('./pages/analytics/analytics.component').then(
+            (a) => a.AnalyticsComponent
+          ),
+        canActivate: [AuthGuard, RoleGuard],
+        data: { roles: [Role.Director] },
+        children: [
+          {
+            path: '',
+            redirectTo: 'taskanalytics',
+            pathMatch: 'full',
+          },
+          {
+            path: 'taskanalytics',
+            loadComponent: () =>
+              import(
+                './pages/analytics/task-analytics/task-analytics.component'
+              ).then((m) => m.TaskAnalyticsComponent),
+          },
+          {
+            path: 'employeeanalytics',
+            loadComponent: () =>
+              import(
+                './pages/analytics/employee-analytics/employee-analytics.component'
+              ).then((m) => m.EmployeeAnalyticsComponent),
+          },
+          {
+            path: 'projectanalytics',
+            loadComponent: () =>
+              import(
+                './pages/analytics/project-analytics/project-analytics.component'
+              ).then((m) => m.ProjectAnalyticsComponent),
+          },
+        ],
       },
     ],
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'signup',
+    loadComponent: () =>
+      import('./pages/signup/signup.component').then((m) => m.SignupComponent),
   },
 ];

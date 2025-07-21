@@ -51,13 +51,15 @@ export class EmployeeComponent implements OnInit {
 
     const { name, email, role } = this.employeeForm.value;
 
-    if (
-      this.employees.find(
-        (emp) => emp.email.toLowerCase() === email.toLowerCase()
-      )
-    ) {
-      alert('This Email is already used by another employee');
-      return;
+    if (!this.isEditMode) {
+      if (
+        this.employees.find(
+          (emp) => emp.email.toLowerCase() === email.toLowerCase()
+        )
+      ) {
+        alert('This Email is already used by another employee');
+        return;
+      }
     }
 
     if (this.employeeForm.valid && this.editingEmployeeId) {
