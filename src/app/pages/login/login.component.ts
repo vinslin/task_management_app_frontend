@@ -55,6 +55,15 @@ export class LoginComponent {
   }
 
   gotoSignup(): void {
-    this.router.navigate(['/signup']);
+    console.log('test singup page');
+    this.router
+      .navigate(['signup'])
+      .then((success) => {
+        console.log('Navigation successful:', success);
+      })
+      .catch((error) => {
+        console.error('Navigation error:', error);
+        alert('Navigation failed: ' + error.message); // Optional: Show user-friendly message
+      });
   }
 }

@@ -1,62 +1,67 @@
-<div id="outer-container">
+<div classs="background">
+  <div id="outer-container">
     <div id="left-container">
-        <h3>Project List</h3>
-        <table>
-            <thead>
-            <tr>
+      <h3>Project List</h3>
+      <table>
+        <thead>
+          <tr>
             <th>Project Name</th>
-            
+
             <th>Description</th>
             <th>Started at</th>
             <th>Edit</th>
-            </tr>
-            </thead>
-            <tr *ngFor="let pro of projects">
-                <td>{{pro.name}}</td>
-                <td>{{pro.description}}</td>
-                <td>{{pro.createdAt  | date: 'mediumDate'}}
-               
-                <td id="pro">
-                    <button (click)="editProject(pro)">Update</button>
-                    <button (click)="deleteProject(pro)">Delete</button>
-            </tr>
+          </tr>
+        </thead>
+        <tr *ngFor="let pro of projects">
+          <td>{{ pro.name }}</td>
+          <td>{{ pro.description }}</td>
+          <td>{{ pro.createdAt | date : "mediumDate" }}</td>
 
-        </table>
-    </div>  
-   
-
- <div id="right-container">
-  <h2>{{isEditMode ? 'Update Project' : 'Add New Project'}}</h2>
-
-  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <label>
-      Name:
-      <input formControlName="name" />
-    </label>
-    <div *ngIf="projectForm.get('name')?.touched && projectForm.get('name')?.invalid">
-      <small style="color: red">Name is required</small>
+          <td id="pro">
+            <button (click)="editProject(pro)">Update</button>
+            <button (click)="deleteProject(pro)">Delete</button>
+          </td>
+        </tr>
+      </table>
     </div>
 
-  
+    <div id="right-container">
+      <h2>{{ isEditMode ? "Update Project" : "Add New Project" }}</h2>
 
-    <label>
-      Description:
-      <input formControlName="description" />
-    </label>
-    <div *ngIf="projectForm.get('description')?.touched && projectForm.get('description')?.invalid">
-      <small style="color: red">Description is required</small>
+      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <label>
+          Name:
+          <input formControlName="name" />
+        </label>
+        <div
+          *ngIf="
+            projectForm.get('name')?.touched && projectForm.get('name')?.invalid
+          "
+        >
+          <small style="color: red">Name is required</small>
+        </div>
+
+        <label>
+          Description:
+          <input formControlName="description" />
+        </label>
+        <div
+          *ngIf="
+            projectForm.get('description')?.touched &&
+            projectForm.get('description')?.invalid
+          "
+        >
+          <small style="color: red">Description is required</small>
+        </div>
+        <div id="but">
+          <br />
+          <button type="submit">{{ isEditMode ? "Update" : "Submit" }}</button>
+
+          <div *ngIf="isEditMode">
+            <button type="button" (click)="cancelUpdate()">Cancel</button>
+          </div>
+        </div>
+      </form>
     </div>
-<div id="but">
-    <br />
-    <button type="submit">{{isEditMode ? 'Update' : 'Submit'}}</button>
-
-<div *ngIf="isEditMode">
-  <button type="button" (click)="cancelUpdate()">Cancel</button>
+  </div>
 </div>
-</div>
-  </form>
-</div>
-
-
-</div>
-

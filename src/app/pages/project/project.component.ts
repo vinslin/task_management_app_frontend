@@ -64,7 +64,8 @@ export class ProjectComponent implements OnInit {
 
     if (
       this.projects.find(
-        (project) => project.name.toLowerCase() == name.toLowerCase()
+        (project) =>
+          project.name.toLowerCase() == name.toLowerCase() && !this.isEditMode
       )
     ) {
       alert('This Project name is already Exist');

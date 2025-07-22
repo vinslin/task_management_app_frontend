@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomSlicePipe } from '../../pipes/custom-slice-pipe';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-practice',
-  imports: [CustomSlicePipe, FormsModule],
+  imports: [CustomSlicePipe, FormsModule,CommonModule],
   templateUrl: './practice.component.html',
   styleUrl: './practice.component.css',
 })
