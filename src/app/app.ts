@@ -21,8 +21,16 @@ export class App implements OnInit {
 
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        if (this.authService.isTokenExpired()) {
+      .subscribe((event: any) => {
+        const currentUrl = event.urlAfterRedirects;
+
+        const publicRoutes = ['/signup', '/login'];
+
+        if (
+          !publicRoutes.includes(currentUrl) &&
+          this.authService.isTokenExpired()
+        ) {
+          //const publicRoutes = ['/signup', '/login'];
           if (!this.authService.wasManuallyLoggedOut())
             alert('Session Expired . Please login again.');
 
