@@ -20,6 +20,14 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'taskmanagement',
+        loadComponent: () =>
+          import('./pages/task-management/task-management.component').then(
+            (m) => m.TaskManagementComponent
+          ),
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'practice',
         loadComponent: () =>
           import('./pages/practice/practice.component').then(
