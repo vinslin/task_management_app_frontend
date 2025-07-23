@@ -1,11 +1,11 @@
 .task-details-card {
   background: #fff;
+  height: 100%;
   padding: 20px 24px;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border-left: 6px solid #2bbbad;
   max-width: 500px;
-  margin: 20px auto;
   font-family: 'Segoe UI', sans-serif;
   color: #333;
   transition: all 0.3s ease-in-out;
@@ -54,10 +54,9 @@ ns-container .clickable-box:hover {
   transform: translateY(-2px);
 }
 
-.button-effect:hover {
+.button-effect > .task-icon-btn:hover {
   cursor: pointer; /*  Changes cursor to hand */
-   background: #ebebeb;
+  background: #ebebeb;
   transition: background-color 0.3s ease; /* smooth transition */
-  padding :5px;
   border-radius : 5px;
 }

@@ -27,14 +27,14 @@
       <span><strong>Completed :</strong> {{ currentTask.isCompleted ? 'Yes' : 'No' }}</span>
     </div>
 
-    <div class="task-row" (click)="onEmployeeClick()">
+    <div class="task-row" >
       <span class="task-icon"></span>
-      <span class="button-effect"><strong>Employee :</strong> {{ currentTask.employeeName }} <span class="task-icon"> ▶️</span></span>
+      <span class="button-effect"><strong>Employee :</strong> {{ currentTask.employeeName }} <span class="task-icon-btn" (click)="onEmployeeClick()"> ▶️</span></span>
     </div>
 
-    <div class="task-row" (click)="onProjectClick()">
+    <div class="task-row" >
       <span class="task-icon"></span>
-      <span class="button-effect"><strong>Project :</strong> {{ currentTask.projectName }}    <span class="task-icon"> ▶️</span></span>
+      <span class="button-effect"><strong>Project :</strong> {{ currentTask.projectName }}    <span class="task-icon-btn" (click)="onProjectClick()"> ▶️</span></span>
     </div>
  
 
