@@ -55,8 +55,8 @@ export class TaskService {
     return this.http.get<ITasks>(`${this.apiUrl}/gettaskbyid/${id}`);
   }
 
-  incompleteTask(id: string, body: any | null): Observable<ITasks> {
-    return this.http.put<ITasks>(`${this.apiUrl}/UnComplete_Tasks/${id}`, body);
+  incompleteTask(id: string): Observable<ITasks> {
+    return this.http.put<ITasks>(`${this.apiUrl}/UnComplete_Tasks/${id}`, {});
   }
 
   completeTask(id: string, body: any | null): Observable<ITasks> {

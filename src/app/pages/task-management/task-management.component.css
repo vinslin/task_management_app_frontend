@@ -1,0 +1,65 @@
+.main-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+/* Width classes */
+.spacer-3 {
+  width: 2%;
+}
+.spacer-6 {
+  width: 4%;
+}
+.section-25 {
+  width: 30%;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+.section-40 {
+  width: 40%;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Drag list box styling */
+.example-list {
+  min-height: 90%;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 6px;
+  overflow-y: auto;
+}
+
+.example-box {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 12px;
+  cursor: move;
+  font-size: 14px;
+}
+
+.example-box:last-child {
+  border-bottom: none;
+}
+
+/* Notes Textarea */
+.note-box {
+  width: 100%;
+  height: 350px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+}

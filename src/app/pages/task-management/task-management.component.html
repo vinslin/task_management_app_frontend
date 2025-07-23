@@ -1,1 +1,44 @@
-<p>task-management works!</p>
+<div class="main-layout">
+  <div class="spacer-3"></div>
+
+  <div class="section-25">
+    <h2>To Do</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="incompletedTasks"
+      [cdkDropListConnectedTo]="['doneList']"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+      id="todoList"
+    >
+      <div class="example-box" *ngFor="let task of incompletedTasks" cdkDrag>
+        {{ task.title }}
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-3"></div>
+
+  <div class="section-25">
+    <h2>Done</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="completedTasks"
+      [cdkDropListConnectedTo]="['todoList']"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+      id="doneList"
+    >
+      <div class="example-box" *ngFor="let task of completedTasks" cdkDrag>
+        {{ task.title }}
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-6"></div>
+
+  <div class="section-40">
+    <h2>Quick Notes</h2>
+    <textarea placeholder="Type your notes..." class="note-box"></textarea>
+  </div>
+</div>
