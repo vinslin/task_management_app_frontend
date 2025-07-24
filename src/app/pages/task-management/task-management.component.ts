@@ -42,9 +42,9 @@ export class TaskManagementComponent implements OnInit {
   projectDetails: boolean = false;
   taskDetails: boolean = false;
 
-  @Output() currentTask: ITasks = new Task();
-  @Output() currentEmployee: IEmployee = new Employee();
-  @Output() currentProject: IProject = new Project();
+  currentTask: ITasks = new Task();
+  currentEmployee: IEmployee = new Employee();
+  currentProject: IProject = new Project();
 
   currentId: string = '';
   temp: string | null = null;
