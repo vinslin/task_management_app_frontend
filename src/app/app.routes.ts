@@ -3,6 +3,8 @@ import { AuthGuard } from './guards/auth-guard';
 import { RoleGuard } from './guards/role-guard';
 import { Role } from './models/role.enum';
 import { MainappComponent } from './components/mainapp/mainapp.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 export const routes: Routes = [
   {
@@ -103,15 +105,13 @@ export const routes: Routes = [
         ],
       },
     ],
-  },
+  }, //eager loading
   {
     path: 'login',
-    loadComponent: () =>
-      import('./pages/login/login.component').then((m) => m.LoginComponent),
+    component: LoginComponent,
   },
   {
     path: 'signup',
-    loadComponent: () =>
-      import('./pages/signup/signup.component').then((m) => m.SignupComponent),
+    component: SignupComponent,
   },
 ];
